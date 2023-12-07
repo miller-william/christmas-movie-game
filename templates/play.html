@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Play Higher or Lower</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #006400; /* Dark Green */
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+
+        h2 {
+            color: #8B0000; /* Dark Red */
+            font-size: 1.4em;
+        }
+
+        button {
+            background-color: #FF4500; /* OrangeRed */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            margin: 0 10px;
+        }
+
+        button:hover {
+            background-color: #FF6347; /* Tomato */
+        }
+
+        img {
+            max-width: 150px; /* Adjust as needed */
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .movie-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .movie-info {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Which film is rated higher?</h1>
+    
+    <form method="post" action="/play">
+        <div class="movie-container">
+            <div class="movie-info">
+                <h2>{{ movie1.title }}</h2>
+                <img src="{{ movie1.img_src }}" alt="Movie 1 Image">
+            </div>
+            <button type="submit" name="guess" value="movie1_higher">Select</button>
+        </div>
+
+        <div class="movie-container">
+            <div class="movie-info">
+                <h2>{{ movie2.title }}</h2>
+                <img src="{{ movie2.img_src }}" alt="Movie 2 Image">
+            </div>
+            <button type="submit" name="guess" value="movie2_higher">Select</button>
+        </div>
+
+        <input type="hidden" name="movie1" value="{{ movie1.title }}">
+        <input type="hidden" name="movie2" value="{{ movie2.title }}">
+    </form>
+</body>
+</html>

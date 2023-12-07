@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Christmas Film Ratings Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #006400; /* Dark Green */
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            color: #8B0000; /* Dark Red */
+            font-size: 1.2em;
+        }
+
+        button {
+            background-color: #FF4500; /* OrangeRed */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #FF6347; /* Tomato */
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Christmas Film Ratings Game!</h1>
+    <p>Guess which film has the highest rating on IMDB!</p>
+    <form action="/play" method="get">
+        <label for="game_mode">Select mode:</label>
+        <select name="game_mode" id="game_mode">
+            <option value="full">Full Game</option>
+            <option value="reduced">Reduced Game</option>
+        </select>
+        <p><button type="submit">Start Game</button></p>
+</body>
+</html>

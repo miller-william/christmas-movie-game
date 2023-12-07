@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #006400; /* Dark Green */
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+
+        h2 {
+            color: #8B0000; /* Dark Red */
+            font-size: 1.4em;
+        }
+
+        p {
+            color: #8B0000; /* Dark Red */
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #FF4500; /* OrangeRed */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #FF6347; /* Tomato */
+        }
+
+        img {
+            max-width: 150px; /* Adjust as needed */
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .movie-container {
+            margin: 20px 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Result</h1>
+
+    {% if correct %}
+        <p>WINNER! Your guess was correct!</p>
+    {% else %}
+        <p>Sorry, your guess was incorrect.</p>
+    {% endif %}
+
+    <div class="movie-container">
+        <h2>{{ movie1.title }} - Rating: {{ movie1.imdb_rating }}</h2>
+        <img src="{{ movie1.img_src }}" alt="Movie 1 Image">
+    </div>
+    <div class="movie-container">
+        <h2>{{ movie2.title }} - Rating: {{ movie2.imdb_rating }}</h2>
+        <img src="{{ movie2.img_src }}" alt="Movie 2 Image">
+    </div>
+
+    <a href="/play"><button>Play Again</button></a>
+    <a href="/"><button>Back to Home</button></a>
+</body>
+</html>
