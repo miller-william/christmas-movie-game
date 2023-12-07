@@ -16,18 +16,15 @@ def pick_movies(df):
 def index():
     return render_template('index.html')
 
-@app.route('/select_mode', methods=['GET', 'POST'])
-def select_mode():
-    if request.method == 'POST':
-        game_mode = request.form['game_mode']
-        return redirect(url_for('play', mode=game_mode))
-    return render_template('select_mode.html')
-
-
 @app.route('/play', methods=['GET', 'POST'])
 def play():
-    game_mode = request.args.get('mode', 'full')
+    if request.method == 'POST':
+        game_mode = request.form.get('game_mode', 'full')
+    else:
+        game_mode = request.args.get('game_mode', 'full')
+
     df = reduced_df if game_mode == 'reduced' else full_df
+    print(game_mode)
 
     if request.method == 'POST':
         user_guess = request.form['guess']
@@ -39,10 +36,10 @@ def play():
         correct = ((movie2['imdb_rating'] >= movie1['imdb_rating'] and user_guess == 'movie2_higher') or
                    (movie2['imdb_rating'] <= movie1['imdb_rating'] and user_guess == 'movie1_higher'))
         
-        return render_template('result.html', movie1=movie1, movie2=movie2, correct=correct)
+        return render_template('result.html', movie1=movie1, movie2=movie2, correct=correct, game_mode = game_mode)
 
     movies = pick_movies(df)
-    return render_template('play.html', movie1=movies.iloc[0].to_dict(), movie2=movies.iloc[1].to_dict())
+    return render_template('play.html', movie1=movies.iloc[0].to_dict(), movie2=movies.iloc[1].to_dict(), game_mode = game_mode)
 
 
 if __name__ == '__main__':

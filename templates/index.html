@@ -40,6 +40,21 @@
         a {
             text-decoration: none;
         }
+        #notes-section {
+            margin-top: 20px;
+            text-align: left;
+            display: none; /* Initially hidden */
+        }
+
+        .notes-toggle {
+            background-color: #006400; /* Dark Green */
+            color: white;
+            padding: 5px 10px;
+            margin: 10px 0;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -48,9 +63,33 @@
     <form action="/play" method="get">
         <label for="game_mode">Select mode:</label>
         <select name="game_mode" id="game_mode">
-            <option value="full">Full Game</option>
-            <option value="reduced">Reduced Game</option>
+            <option value="reduced">Standard</option>
+            <option value="full">Include obscure films</option>
         </select>
         <p><button type="submit">Start Game</button></p>
+
+    <!-- Toggle Button for Notes and Sources -->
+    <button type="button" class="notes-toggle" onclick="toggleNotes()">Show Notes and Sources</button>
+
+    <!-- Notes and Sources Section -->
+    <div id="notes-section">
+        <h3>Notes and Sources</h3>
+        <p>The 'Include obscure films' mode may contain missing data.</p>
+        <p>Film data source: <a href="https://www.kaggle.com/datasets/jonbown/christmas-movies" target="_blank">https://www.kaggle.com/datasets/jonbown/christmas-movies</a></p>
+        <p>Github repo: <a href="https://github.com/miller-william/christmas-movie-game" target="_blank">https://github.com/miller-william/christmas-movie-game</a></p>
+    </div>
+
+    <script>
+        function toggleNotes() {
+            var notesSection = document.getElementById("notes-section");
+            if (notesSection.style.display === "none") {
+                notesSection.style.display = "block";
+                document.querySelector('.notes-toggle').textContent = "Hide Notes and Sources";
+            } else {
+                notesSection.style.display = "none";
+                document.querySelector('.notes-toggle').textContent = "Show Notes and Sources";
+            }
+        }
+    </script>
 </body>
 </html>
